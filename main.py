@@ -163,6 +163,7 @@ def contact():
 
 
 @app.route("/new-post", methods=['GET', 'POST'])
+@login_required
 @admin_only
 def add_new_post():
     form = CreatePostForm()
@@ -183,6 +184,7 @@ def add_new_post():
 
 
 @app.route("/edit-post/<int:post_id>", methods=['GET', 'POST'])
+@login_required
 @admin_only
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
@@ -206,6 +208,7 @@ def edit_post(post_id):
 
 
 @app.route("/delete/<int:post_id>")
+@login_required
 @admin_only
 def delete_post(post_id):
     post_to_delete = BlogPost.query.get(post_id)
